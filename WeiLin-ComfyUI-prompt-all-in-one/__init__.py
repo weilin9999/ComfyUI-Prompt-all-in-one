@@ -16,7 +16,6 @@ class WeiLinComfyUIPromptAllInOneGreat:
                     "multiline": True, #True if you want the field to look like the one on the ClipTextEncode node
                     "default": "",
                     "placeholder": "输入提示词",
-                    "id": "weilin_great_txt2img_prompt"
                 }),
             },
         }
@@ -49,7 +48,6 @@ class WeiLinComfyUIPromptAllInOneNeg:
                     "multiline": True, #True if you want the field to look like the one on the ClipTextEncode node
                     "default": "",
                     "placeholder": "输入提示词",
-                    "id": "weilin_neg_txt2img_prompt"
                 }),
             },
         }
