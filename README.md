@@ -15,7 +15,8 @@ ComfyUI-Prompt-all-in-one 硬搬版 Webui 的 Prompt-all-in-one
 # 安装插件详细介绍，手动安装版本
 
 直接下载本项目最新的 Release 然后解压，放到 ComfyUI 直接启动 ComfyUI 即可使用本插件。
-
+![](https://github.com/weilin9999/WeiLin-ComfyUI-prompt-all-in-one/blob/master/step/1.png)
+![](https://github.com/weilin9999/WeiLin-ComfyUI-prompt-all-in-one/blob/master/step/2.png)
 # 本项目简要说明
 
 项目初始只是方便编辑 tag，所以自己写了插件，有问题可以提交 issue，不一定会处理哈。
