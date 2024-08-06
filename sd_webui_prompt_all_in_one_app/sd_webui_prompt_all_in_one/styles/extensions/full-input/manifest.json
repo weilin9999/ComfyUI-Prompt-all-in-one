@@ -1,0 +1,10 @@
+{
+  "name": "The keyword input box is 100% width",
+  "i18n": {
+    "zh_CN": "\u5173\u952e\u8bcd\u8f93\u5165\u6846100%\u5bbd\u5ea6",
+    "zh_HK": "\u95dc\u9375\u8a5e\u8f38\u5165\u6846\u64c1\u6709100%\u5bec\u5ea6",
+    "zh_TW": "\u95dc\u9375\u5b57\u8f38\u5165\u6846\u4f54\u64da100%\u5bec\u5ea6"
+  },
+  "author": "Physton",
+  "type": "enhance"
+}

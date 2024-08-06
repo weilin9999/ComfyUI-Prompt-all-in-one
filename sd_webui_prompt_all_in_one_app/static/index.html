@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sd-webui-prompt-all-in-one</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    <style>
+        .topBar{
+            display: flex;
+            flex-direction: column;
+        }
+        .topBar .topBox{
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body class="">
+  <dialog id="weilin_promptGreateDialog" style="width: 100%;height: 100%;overflow: auto;">
+      <div class="topBar">
+        <div class="topBox">
+            <button onclick="closeDialog()" >关闭PromptUI</button>
+        </div>
+        <div style="margin-top: 10px;">在此输入提示词即可，当打开本UI的时候Comyfui正向提示词输入框默认只读无法编辑文本！</div>
+        <div style="margin-top: 10px;" id="yourIsEditing"></div>
+      </div>
+      <div id="tabs">
+          <div id="tab_txt2img" class="tabitem gradio-tabitem svelte-19hvt5v">
+              <div class="svelte-vt1mxs gap">
+                  <div id="txt2img_toprow" class="gradio-row svelte-15lo0d8 compact">
+                      <div id="txt2img_prompt_container" class="gradio-column svelte-vt1mxs gap">
+                          <div id="component-5173" class="gradio-row svelte-15lo0d8">
+                              <div id="component-5174" class="gradio-column svelte-vt1mxs gap">
+                                  <div id="component-5175" class="gradio-row svelte-15lo0d8">
+                                      <div class="form svelte-awbtu4">
+                                          <div id="txt2img_token_counter" class="block gradio-html token-counter svelte-mppz8v padded" title="">
+                                              <div class="wrap center svelte-gjihhp hide"></div>
+                                              <div class="svelte-1ed2p3z">
+                                                  <div class="prose gradio-html token-counter svelte-1ybaih5" id="txt2img_token_counter">
+                                                      <span class="gr-box gr-text-input">0/0</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div id="txt2img_prompt" class="block gradio-textbox svelte-mppz8v padded">
+                                              <label class="svelte-4xt1ch">
+                                                  <span class="svelte-1gfkn6j sr-only hide"></span>
+                                                  <textarea id="weilin_prompt_text_input" data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                              </label>
+                                              <my-component></my-component>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="component-5178" class="gradio-row svelte-15lo0d8" >
+                              <div id="component-5179" class="gradio-column svelte-vt1mxs gap">
+                                  <div id="component-5180" class="gradio-row svelte-15lo0d8">
+                                      <div class="form svelte-awbtu4">
+                                          <div id="txt2img_negative_token_counter" class="block gradio-html token-counter svelte-mppz8v padded" title="">
+                                              <div class="wrap center svelte-gjihhp hide"></div>
+                                              <div class="svelte-1ed2p3z">
+                                                  <div class="prose gradio-html token-counter svelte-1ybaih5" id="txt2img_negative_token_counter">
+                                                      <span class="gr-box gr-text-input">0/0</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div id="txt2img_neg_prompt" class="block gradio-textbox svelte-mppz8v padded">
+                                              <label class="svelte-4xt1ch">
+                                                  <span class="svelte-1gfkn6j sr-only hide"></span>
+                                                  <textarea id="weilin_prompt_text_neg_input" data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="txt2img_steps" class="block gradio-slider svelte-mppz8v padded">
+                  <div class="wrap default svelte-gjihhp hide"></div>
+                  <div class="wrap svelte-jigama">
+                      <div class="head svelte-jigama">
+                          <label for="range_id_1">
+                              <span class="svelte-1gfkn6j">Steps</span>
+                          </label>
+                          <input type="number" min="1" max="150" step="1" class="svelte-jigama" value="20">
+                      </div>
+                  </div>
+                  <input type="range" id="range_id_1" name="cowbell" min="1" max="150" step="1" class="svelte-jigama">
+              </div>
+          </div>
+          <div id="tab_img2img" class="tabitem gradio-tabitem svelte-19hvt5v">
+              <div class="svelte-vt1mxs gap">
+                  <div id="img2img_toprow" class="gradio-row svelte-15lo0d8 compact">
+                      <div id="img2img_prompt_container" class="gradio-column svelte-vt1mxs gap">
+                          <div id="component-5703" class="gradio-row svelte-15lo0d8">
+                              <div id="component-5704" class="gradio-column svelte-vt1mxs gap">
+                                  <div id="component-5705" class="gradio-row svelte-15lo0d8">
+                                      <div class="form svelte-awbtu4">
+                                          <div id="img2img_token_counter" class="block gradio-html token-counter svelte-mppz8v padded" title="">
+                                              <div class="wrap center svelte-gjihhp hide"></div>
+                                              <div class="svelte-1ed2p3z">
+                                                  <div class="prose gradio-html token-counter svelte-1ybaih5" id="img2img_token_counter">
+                                                      <span class="gr-box gr-text-input">0/0</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div id="img2img_prompt" class="block gradio-textbox svelte-mppz8v padded">
+                                              <label class="svelte-4xt1ch">
+                                                  <span class="svelte-1gfkn6j sr-only hide"></span>
+                                                  <textarea data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="component-5708" class="gradio-row svelte-15lo0d8">
+                              <div id="component-5709" class="gradio-column svelte-vt1mxs gap">
+                                  <div id="component-5710" class="gradio-row svelte-15lo0d8">
+                                      <div class="form svelte-awbtu4">
+                                          <div id="img2img_negative_token_counter" class="block gradio-html token-counter svelte-mppz8v padded" title="">
+                                              <div class="wrap center svelte-gjihhp hide"></div>
+                                              <div class="svelte-1ed2p3z">
+                                                  <div class="prose gradio-html token-counter svelte-1ybaih5" id="img2img_negative_token_counter">
+                                                      <span class="gr-box gr-text-input">0/0</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div id="img2img_neg_prompt" class="block gradio-textbox svelte-mppz8v padded">
+                                              <label class="svelte-4xt1ch">
+                                                  <span class="svelte-1gfkn6j sr-only hide"></span>
+                                                  <textarea data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="img2img_steps" class="block gradio-slider svelte-mppz8v padded">
+                  <div class="wrap default svelte-gjihhp hide"></div>
+                  <div class="wrap svelte-jigama">
+                      <div class="head svelte-jigama">
+                          <label for="range_id_20">
+                              <span class="svelte-1gfkn6j">Steps</span>
+                          </label>
+                          <input type="number" min="1" max="150" step="1" class="svelte-jigama" value="20">
+                      </div>
+                  </div>
+                  <input type="range" id="range_id_20" name="cowbell" min="1" max="150" step="1" class="svelte-jigama">
+              </div>
+          </div>
+      </div>
+      <div id="txt2img_checkpoints_cards">
+          <div class="card"></div>
+      </div>    
+  </dialog>
+</body>
+<script>
+    const APP_MODE = true
+    let UiLoaded = []
+    let embeddings = []
+    let loras = []
+    let opts = {}
+    let thisRandomId = ''
+
+    const weilin_great_prompt_ip_input_box = document.getElementById('weilin_great_prompt_ip_input_box')
+
+
+    const params = new URL(window.location.href)
+    const searchParams = params.searchParams
+    const window_type =  searchParams.get('type')
+    // console.log(window_type)
+    if(window_type == 'greate_prompt'){
+        const ng_box = document.getElementById('component-5178')
+        ng_box.style = "display: none !important";
+        window.name = 'greate_prompt_xx_2024'
+        const editingBox = document.getElementById('yourIsEditing')
+        editingBox.innerText="你正在编辑 -> 正向提示词"
+    }else if(window_type == 'neg_prompt'){
+        const ng_box = document.getElementById('component-5173')
+        ng_box.style = "display: none !important";
+        window.name = 'neg_prompt_xx_2024'
+        const editingBox = document.getElementById('yourIsEditing')
+        editingBox.innerText="你正在编辑 -> 反向提示词"
+    }
+
+    function selectCheckpoint(name) {
+        var time = Math.floor(Math.random() * 2000 + 3000)
+        setTimeout(function() {
+            opts.sd_model_checkpoint = name
+        }, time)
+    }
+
+    function onUiLoaded(callback) {
+        UiLoaded.push(callback)
+    }
+
+    window.onload = function() {
+        UiLoaded.forEach(function(callback) {
+            callback()
+        })
+    }
+
+    const log = document.getElementById("weilin_prompt_text_input");
+    log.addEventListener("input", updateValue);
+    const log2 = document.getElementById("weilin_prompt_text_neg_input");
+    log2.addEventListener("input", updateValue);
+
+
+    window.addEventListener('message', e => {
+        // console.log(e.data)
+      if(e.data.handel == 'openWeiLinGreatPromptSD'){
+        if(window_type =='greate_prompt'){
+            thisRandomId = e.data.randomid
+            log.value = e.data.value
+            openDialog()
+        }
+      }else if(e.data.handel == 'openWeiLinNegPromptSD'){
+        if(window_type =='neg_prompt'){
+            thisRandomId = e.data.randomid
+            log2.value = e.data.value
+            openDialog()
+        }
+      }
+    }, false);
+
+    function updateValue(e) {
+        console.log(log.value)
+        if(window_type =='greate_prompt'){
+            window.top.postMessage({handel: 'changeWeiLinGreatePrompt',value: log.value,randomid: thisRandomId}, "/");
+        }else if(window_type =='neg_prompt'){
+            window.top.postMessage({handel: 'changeWeiLinNegPrompt',value: log2.value,randomid: thisRandomId}, "/");
+        }
+    }
+
+    function openDialog(){
+        const dialog = document.getElementById("weilin_promptGreateDialog");
+        dialog.show()
+    }
+
+    function closeDialog(){
+        const dialog = document.getElementById("weilin_promptGreateDialog");
+        dialog.close()
+        if(window_type =='greate_prompt'){
+            window.top.postMessage({handel: 'closeWeilinGreatPromptBox', randomid: thisRandomId}, "/");
+        }else if(window_type =='neg_prompt'){
+            window.top.postMessage({handel: 'closeWeilinNegPromptBox', randomid: thisRandomId}, "/");
+        }
+    }
+
+</script>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script src="./js/main.js"></script>
+<script src="/sd-webui-prompt-all-in-one-js"></script>
+</html>
