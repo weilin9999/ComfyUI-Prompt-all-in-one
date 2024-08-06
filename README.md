@@ -1,6 +1,8 @@
-# ComfyUI-Prompt-all-in-one
+# WeiLin-ComfyUI-Prompt-all-in-one
 
-ComfyUI-Prompt-all-in-one 硬搬版 Webui 的 Prompt-all-in-one
+WeiLin-ComfyUI-Prompt-all-in-one ComfyUI版的prompt-all-in-one，在基于sd-webui-prompt-all-in-one-app项目上修改而来的ComfyUI版本，只需要在ComfyUI中添加本项目的ComfyUI节点即可使用可视化的tag编辑器
+
+如果你喜欢本项目赏一个star吧！
 
 # 概要说明
 
