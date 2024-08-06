@@ -85,7 +85,10 @@ req_path = os.path.join(base_path,"requirements.txt")
 
 def install_requirements(requirements_file_path):
     if os.path.exists(requirements_file_path):
-        subprocess.run(["pip", "install", "-r", requirements_file_path])
+        try:
+            subprocess.run(["pip", "install", "-r", requirements_file_path])
+        except:
+            subprocess.run(["pip", "install", "-r", requirements_file_path], shell=True)
 
 #安装原APP依赖
 print('安装依赖中.......')

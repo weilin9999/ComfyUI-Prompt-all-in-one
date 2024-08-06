@@ -1,5 +1,6 @@
 import { app } from '../../scripts/app.js'
 
+let global_randomID = (Math.random() + new Date().getTime()).toString(32).slice(0,8); // 随机种子ID
 app.registerExtension({
   name: "weilin.prompt_node_neg",
   async init(app) {
@@ -21,7 +22,7 @@ app.registerExtension({
       .weilin_iframe_box{
         min-width: 80%;
         min-height: 80%;
-        border-radius: 20px;
+        border-radius: 10px;
         background-color: #ffffff;
       }
     `;
@@ -29,14 +30,16 @@ app.registerExtension({
 
     const hasIframeBox = document.getElementById('weilin_bg_box_neg')
     if(hasIframeBox == null){
+      const ui_theme = localStorage.getItem("weilin_prompt_theme");
+      localStorage.setItem("weilin_prompt_neg_refid",global_randomID)
       // 全局创建一个即可
       const iftramBox = document.createElement("div");
       iftramBox.innerHTML = `
         <iframe
           class="weilin_iframe_box"
-          id='weilin_bg_box_neg'
-          name='weilin_bg_box_neg'
-          src='./weilin/web_ui/index.html?type=neg_prompt'
+          id='weilin_prompt_neg_box'
+          name='weilin_prompt_neg_box'
+          src='./weilin/web_ui/index.html?type=neg_prompt&refid=${global_randomID}&__theme=${ui_theme}'
           frameborder='0'
           scrolling='on'
           >
@@ -75,6 +78,7 @@ app.registerExtension({
 
           this.addWidget("button", "打开可视化WeiLin PromptUI", '', ($e) => {
             randomID = (Math.random() + new Date().getTime()).toString(32).slice(0,8); // 随机种子ID
+            localStorage.setItem("weilin_prompt_randomid",randomID);
             for (let index = 0; index < this.widgets.length; index++) {
               const element = this.widgets[index];
               if(element.type == "customtext"){
@@ -84,6 +88,15 @@ app.registerExtension({
                 // element.element.value
                 for (let index = 0; index < window.length; index++) {
                   window[index].postMessage({handel: 'openWeiLinNegPromptSD',value: thisInputElement.value,randomid: randomID}, "*");
+                }
+
+                const ui_theme = localStorage.getItem("weilin_prompt_theme");
+                const iframeEle = document.getElementById('weilin_prompt_neg_box')
+                const params = new URL(iframeEle.src)
+                const searchParams = params.searchParams
+                const theme_type =  searchParams.get("__theme")
+                if(String(ui_theme)  != String(theme_type) ){
+                  iframeEle.src = `./weilin/web_ui/index.html?type=neg_prompt&refid=${global_randomID}&__theme=${ui_theme}`
                 }
 
                 const ifreamBox = document.getElementById('weilin_bg_box_neg')
@@ -101,6 +114,15 @@ app.registerExtension({
               thisInputElement.readOnly = false
               const ifreamBox = document.getElementById('weilin_bg_box_neg')
               ifreamBox.style.display = "none"
+            }else if(e.data.handel == 'getWeilinNegPromptBox' && e.data.randomid == randomID){
+              for (let index = 0; index < window.length; index++) {
+                window[index].postMessage({handel: 'responeseWeiLinNegPromptGet',value: thisInputElement.value,randomid: randomID}, "*");
+              }
+            }else if(e.data.handel == 'refreshWeilinPromptBox'){
+              global_randomID = (Math.random() + new Date().getTime()).toString(32).slice(0,8); // 随机种子ID
+              const ui_theme = localStorage.getItem("weilin_prompt_theme");
+              const iframeEle = document.getElementById('weilin_prompt_neg_box')
+              iframeEle.src = `./weilin/web_ui/index.html?type=neg_prompt&refid=${global_randomID}&__theme=${ui_theme}`
             }
           }, false);
 
