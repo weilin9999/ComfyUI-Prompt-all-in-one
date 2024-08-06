@@ -1,6 +1,8 @@
 
 import re
 import random
+import os
+import subprocess
 
 #正向提示词
 class WeiLinComfyUIPromptAllInOneGreat:
@@ -75,6 +77,23 @@ def extract_tags(text):
         rdtext=newarr[rdindex]
         text = re.sub(pattern, rdtext, text,count=1)
     return text
+
+
+
+base_path = os.path.join(os.path.dirname(__file__), "sd_webui_prompt_all_in_one_app")
+req_path = os.path.join(base_path,"requirements.txt")
+
+def install_requirements(requirements_file_path):
+    if os.path.exists(requirements_file_path):
+        subprocess.run(["pip", "install", "-r", requirements_file_path])
+
+#安装原APP依赖
+print('安装依赖中.......')
+install_requirements(req_path)
+print('安装完成 =======')
+#启动原APP
+from .sd_webui_prompt_all_in_one_app.app import app_start
+app_start()
 
 
 # A dictionary that contains all nodes you want to export with their names
