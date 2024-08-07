@@ -14,7 +14,9 @@
         .topBar .topBox{
             padding: 10px 0 0 10px;
             display: flex;
+            flex-direction: row;
             align-items: center;
+            justify-content: space-between;
         }
         .closeIcon{
             width: 20px;
@@ -25,6 +27,21 @@
             width: 20px;
             height: 20px;
             fill: green;
+        }
+        .fullIcon{
+            width: 20px;
+            height: 20px;
+            fill: var(--pp-ph-phe-ec-extendBtnGroup-color);
+        }
+        .nomIcon{
+            width: 20px;
+            height: 20px;
+            fill: var(--pp-ph-phe-ec-extendBtnGroup-color); 
+        }
+        .copyIcon{
+            width: 20px;
+            height: 20px;
+            fill: var(--pp-ph-phe-ec-extendBtnGroup-color); 
         }
         .closeBtn{
             display: flex;
@@ -39,35 +56,113 @@
             justify-content: center;
             cursor: pointer;
         }
+        .fullBtn{
+            margin-right: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+        }
+        .nomBtn{
+            margin-right: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+        }
+        .copyBtn{
+            margin-left: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: flex;
+        }
+        .leftBox{
+            display: flex;
+            align-items: center;
+        }
+        .rightBox{
+            display: flex;
+            align-items: center;
+        }
+        .copyPrompt{
+            display: none;
+            align-items: center;
+        }
 
     </style>
 </head>
 <body class="">
     <div class="topBar">
         <div class="topBox">
-            <div class="closeBtn" onclick="closeDialog()">
-                <div class="closeIcon">
-                    <div class="icon-svg icon-svg-close" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
-                        <svg id="uuid-02c25950-3da6-4790-a038-e69a788fa473" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
-                        <path d="m14,1.41l-1.41-1.41-5.59,5.59L1.41,0,0,1.41l5.59,5.59L0,12.59l1.41,1.41,5.59-5.59,5.59,5.59,1.41-1.41-5.59-5.59L14,1.41Z"></path>
-                        </svg>
+            <div class="leftBox">
+                <div class="closeBtn" onclick="closeDialog()">
+                    <div class="closeIcon">
+                        <div class="icon-svg icon-svg-close" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
+                            <svg id="uuid-02c25950-3da6-4790-a038-e69a788fa473" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
+                            <path d="m14,1.41l-1.41-1.41-5.59,5.59L1.41,0,0,1.41l5.59,5.59L0,12.59l1.41,1.41,5.59-5.59,5.59,5.59,1.41-1.41-5.59-5.59L14,1.41Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="padding-left: 10px;">关闭PromptUI</div>
+                </div>
+                <div class="refreshBtn" onclick="iNeedRefresh()">
+                    <div class="refreshIcon">
+                        <div class="icon-svg icon-svg-refresh" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
+                            <svg id="uuid-471e7dd3-8710-47a7-a01a-33b30b047321" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022.73 870.84">
+                              <path d="m698.85,706.29c-56.83,40.33-123.34,60.55-191.36,59.62-8.99-.09-17.93-.58-26.77-1.35-3.6-.34-7.19-.95-10.84-1.4-6.94-.95-13.88-1.9-20.62-3.22-4.2-.8-8.29-1.88-12.39-2.84-6.64-1.58-13.23-3.17-19.73-5.12-3.1-.97-6.14-2.09-9.24-3.15-7.44-2.52-14.88-5.14-22.12-8.21-1.65-.67-3.24-1.45-4.85-2.2-8.49-3.77-16.83-7.71-24.92-12.16-.4-.2-.7-.37-1.1-.57-27.37-15.21-52.39-34.21-74.36-56.41-.35-.35-.7-.75-1.05-1.15-6.84-6.91-13.33-14.18-19.52-21.72-1.3-1.62-2.55-3.34-3.85-4.98-44.7-56.61-71.66-128.24-71.66-206.16h75.81c1.95,0,3.85-1.05,4.85-2.89,1-1.83.85-4-.25-5.62l-127.39-193.48c-1-1.5-2.69-2.5-4.61-2.5s-3.59,1-4.59,2.5L.91,426.73c-1.08,1.65-1.25,3.8-.25,5.64,1,1.85,2.9,2.89,4.84,2.89h75.81c0,91.6,28.21,176.53,76.12,246.73.6.97,1,2.02,1.65,2.99,4.99,7.2,10.49,13.8,15.83,20.6,1.95,2.57,3.85,5.21,5.89,7.74,7.84,9.64,16.18,18.67,24.72,27.54.85.87,1.6,1.74,2.4,2.52,28.77,29.16,61.28,53.73,96.68,73.35.9.59,1.8,1.13,2.8,1.66,10.19,5.54,20.67,10.56,31.31,15.3,2.64,1.15,5.19,2.42,7.89,3.57,9.09,3.8,18.43,7.15,27.82,10.34,4.44,1.53,8.84,3.08,13.33,4.47,8.24,2.47,16.63,4.52,25.07,6.57,5.64,1.33,11.19,2.74,16.93,3.84,2.34.49,4.59,1.22,6.94,1.59,7.99,1.43,15.98,2.22,23.97,3.22,2.89.33,5.74.82,8.59,1.15,14.39,1.42,28.67,2.38,42.95,2.38,87.45,0,172.74-27.08,245.9-78.98,23.32-16.58,29.01-49.1,12.67-72.76-16.37-23.67-48.59-29.39-71.91-12.81m242.6-271.02c-.04-91.33-28.07-176.08-75.76-246.14-.71-1.2-1.2-2.42-1.95-3.52-5.95-8.57-12.39-16.55-18.83-24.57-.75-.98-1.45-2-2.24-2.95-43.65-53.6-98.43-95.03-160.55-122.1-1.7-.75-3.4-1.6-5.1-2.35-9.93-4.12-20.07-7.76-30.26-11.24-3.7-1.22-7.34-2.57-11.09-3.69-8.89-2.72-17.92-4.94-27.02-7.07-5.04-1.18-10.04-2.47-15.12-3.47-2.55-.5-4.9-1.25-7.4-1.69-6.79-1.2-13.64-1.73-20.42-2.6-4.7-.6-9.34-1.35-14.09-1.85-11.43-1.07-22.77-1.52-34.1-1.72-2.04,0-4.09-.32-6.14-.32-.35,0-.7.1-1.1.12-87.29.07-172.44,26.76-245.5,78.6-23.37,16.53-29.06,49.11-12.73,72.75,16.33,23.65,48.59,29.39,71.91,12.81,56.43-40.02,122.3-60.27,189.81-59.67,9.74.07,19.28.55,28.72,1.45,2.95.35,5.79.77,8.69,1.15,7.79.95,15.48,2.07,23.07,3.6,3.35.65,6.69,1.52,9.93,2.27,7.45,1.7,14.9,3.52,22.18,5.74,2.29.75,4.54,1.57,6.83,2.35,8.34,2.75,16.48,5.72,24.52,9.09.81.35,1.66.77,2.45,1.1,48.09,20.95,90.29,53.21,123.21,93.53.19.25.4.58.59.8,46.34,57.1,74.26,130.11,74.26,209.58h-75.81c-1.94,0-3.84,1.05-4.84,2.89-1,1.85-.85,4,.26,5.64l127.43,193.45c.96,1.49,2.66,2.47,4.6,2.47s3.59-.97,4.59-2.47l127.35-193.45c1.09-1.65,1.24-3.8.25-5.64-1.01-1.85-2.9-2.89-4.85-2.89h-75.75s0,0,0,0Z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="padding-left: 10px;">刷新PromptUI</div>
+                </div>
+                <div class="copyPrompt" id="weilin_copyPrompt">
+                    <div class="copyBtn" id="weilinCopyGreatPrompt" data-clipboard-target="#weilin_prompt_text_input">
+                        <div class="copyIcon">
+                            <div class="icon-svg icon-svg-copy hover-scale-120" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
+                                <svg id="uuid-d8cf81fa-a19a-405c-a171-b80a3ec6289a" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.1 895.9">
+                                    <path d="m.1,511.8c0,17.73,14.41,32.1,32.19,32.11s32.2-14.37,32.21-32.09h0c0-17.74-14.41-32.12-32.19-32.12S.1,494.06.1,511.79H.1Z"></path>
+                                    <path d="m646.1,386.8l-269.5-2.1c-14.3-.1-26,13.8-26,31s11.7,31.3,26,31.4l269.5,2.1c14.3.1,26-13.8,26-31s-11.7-31.3-26-31.4h0Zm0,127l-269.5-2.1c-14.3-.1-26,13.8-26,31s11.7,31.3,26,31.4l269.5,2.1c14.3.2,26-13.8,26-31s-11.7-31.3-26-31.4Z"></path>
+                                    <path d="m640.1,0h-319.1c-70.4,0-128,57.6-128,128h-64.9C57.7,128,.1,185.6.1,256v128C0,401.7,14.5,416,32.3,416s32.2-14.4,32.2-32.1v-127.8c0-35.2,28.8-64,64-64h64.5v447.8c0,70.4,57.6,128,128,128h255.1c-.1,35.2-28.8,63.8-64,63.8H128.5c-35.2,0-64-28.8-64-64v-128.1c0-17.7-14.4-32.1-32.2-32.1S0,621.9,0,639.6v128.3c0,70.4,57.6,128,128,128h384.1c70.4,0,128-57.6,128-128h65c70.4,0,128-57.6,128-128V192S640.1,0,640.1,0Zm.1,63.4l127.7,128.3h-63.9c-35.2,0-64-28.8-64-64V63.4h.2,0Zm64,641h-384.1c-35.2,0-64-28.8-64-64V127.4c0-35.2,28.8-64,64-64h254.9v63.7c0,70.4,57.6,128,128,128h65.2v385.3c0,35.2-28.8,64-64,64h0Z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="padding-left: 10px;">一键复制正向提示词</div>
+                    </div>
+                    <div class="copyBtn" id="weilinCopyNegPrompt" data-clipboard-target="#weilin_prompt_text_neg_input">
+                        <div class="copyIcon">
+                            <div class="icon-svg icon-svg-copy hover-scale-120" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
+                                <svg id="uuid-d8cf81fa-a19a-405c-a171-b80a3ec6289a" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.1 895.9">
+                                    <path d="m.1,511.8c0,17.73,14.41,32.1,32.19,32.11s32.2-14.37,32.21-32.09h0c0-17.74-14.41-32.12-32.19-32.12S.1,494.06.1,511.79H.1Z"></path>
+                                    <path d="m646.1,386.8l-269.5-2.1c-14.3-.1-26,13.8-26,31s11.7,31.3,26,31.4l269.5,2.1c14.3.1,26-13.8,26-31s-11.7-31.3-26-31.4h0Zm0,127l-269.5-2.1c-14.3-.1-26,13.8-26,31s11.7,31.3,26,31.4l269.5,2.1c14.3.2,26-13.8,26-31s-11.7-31.3-26-31.4Z"></path>
+                                    <path d="m640.1,0h-319.1c-70.4,0-128,57.6-128,128h-64.9C57.7,128,.1,185.6.1,256v128C0,401.7,14.5,416,32.3,416s32.2-14.4,32.2-32.1v-127.8c0-35.2,28.8-64,64-64h64.5v447.8c0,70.4,57.6,128,128,128h255.1c-.1,35.2-28.8,63.8-64,63.8H128.5c-35.2,0-64-28.8-64-64v-128.1c0-17.7-14.4-32.1-32.2-32.1S0,621.9,0,639.6v128.3c0,70.4,57.6,128,128,128h384.1c70.4,0,128-57.6,128-128h65c70.4,0,128-57.6,128-128V192S640.1,0,640.1,0Zm.1,63.4l127.7,128.3h-63.9c-35.2,0-64-28.8-64-64V63.4h.2,0Zm64,641h-384.1c-35.2,0-64-28.8-64-64V127.4c0-35.2,28.8-64,64-64h254.9v63.7c0,70.4,57.6,128,128,128h65.2v385.3c0,35.2-28.8,64-64,64h0Z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="padding-left: 10px;">一键复制反向提示词</div>
                     </div>
                 </div>
-                <div style="padding-left: 10px;">关闭PromptUI</div>
             </div>
-            <div class="refreshBtn" onclick="iNeedRefresh()">
-                <div class="refreshIcon">
-                    <div class="icon-svg icon-svg-refresh" data-name="name" style=""><!--?xml version="1.0" encoding="UTF-8"?-->
-                        <svg id="uuid-471e7dd3-8710-47a7-a01a-33b30b047321" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022.73 870.84">
-                          <path d="m698.85,706.29c-56.83,40.33-123.34,60.55-191.36,59.62-8.99-.09-17.93-.58-26.77-1.35-3.6-.34-7.19-.95-10.84-1.4-6.94-.95-13.88-1.9-20.62-3.22-4.2-.8-8.29-1.88-12.39-2.84-6.64-1.58-13.23-3.17-19.73-5.12-3.1-.97-6.14-2.09-9.24-3.15-7.44-2.52-14.88-5.14-22.12-8.21-1.65-.67-3.24-1.45-4.85-2.2-8.49-3.77-16.83-7.71-24.92-12.16-.4-.2-.7-.37-1.1-.57-27.37-15.21-52.39-34.21-74.36-56.41-.35-.35-.7-.75-1.05-1.15-6.84-6.91-13.33-14.18-19.52-21.72-1.3-1.62-2.55-3.34-3.85-4.98-44.7-56.61-71.66-128.24-71.66-206.16h75.81c1.95,0,3.85-1.05,4.85-2.89,1-1.83.85-4-.25-5.62l-127.39-193.48c-1-1.5-2.69-2.5-4.61-2.5s-3.59,1-4.59,2.5L.91,426.73c-1.08,1.65-1.25,3.8-.25,5.64,1,1.85,2.9,2.89,4.84,2.89h75.81c0,91.6,28.21,176.53,76.12,246.73.6.97,1,2.02,1.65,2.99,4.99,7.2,10.49,13.8,15.83,20.6,1.95,2.57,3.85,5.21,5.89,7.74,7.84,9.64,16.18,18.67,24.72,27.54.85.87,1.6,1.74,2.4,2.52,28.77,29.16,61.28,53.73,96.68,73.35.9.59,1.8,1.13,2.8,1.66,10.19,5.54,20.67,10.56,31.31,15.3,2.64,1.15,5.19,2.42,7.89,3.57,9.09,3.8,18.43,7.15,27.82,10.34,4.44,1.53,8.84,3.08,13.33,4.47,8.24,2.47,16.63,4.52,25.07,6.57,5.64,1.33,11.19,2.74,16.93,3.84,2.34.49,4.59,1.22,6.94,1.59,7.99,1.43,15.98,2.22,23.97,3.22,2.89.33,5.74.82,8.59,1.15,14.39,1.42,28.67,2.38,42.95,2.38,87.45,0,172.74-27.08,245.9-78.98,23.32-16.58,29.01-49.1,12.67-72.76-16.37-23.67-48.59-29.39-71.91-12.81m242.6-271.02c-.04-91.33-28.07-176.08-75.76-246.14-.71-1.2-1.2-2.42-1.95-3.52-5.95-8.57-12.39-16.55-18.83-24.57-.75-.98-1.45-2-2.24-2.95-43.65-53.6-98.43-95.03-160.55-122.1-1.7-.75-3.4-1.6-5.1-2.35-9.93-4.12-20.07-7.76-30.26-11.24-3.7-1.22-7.34-2.57-11.09-3.69-8.89-2.72-17.92-4.94-27.02-7.07-5.04-1.18-10.04-2.47-15.12-3.47-2.55-.5-4.9-1.25-7.4-1.69-6.79-1.2-13.64-1.73-20.42-2.6-4.7-.6-9.34-1.35-14.09-1.85-11.43-1.07-22.77-1.52-34.1-1.72-2.04,0-4.09-.32-6.14-.32-.35,0-.7.1-1.1.12-87.29.07-172.44,26.76-245.5,78.6-23.37,16.53-29.06,49.11-12.73,72.75,16.33,23.65,48.59,29.39,71.91,12.81,56.43-40.02,122.3-60.27,189.81-59.67,9.74.07,19.28.55,28.72,1.45,2.95.35,5.79.77,8.69,1.15,7.79.95,15.48,2.07,23.07,3.6,3.35.65,6.69,1.52,9.93,2.27,7.45,1.7,14.9,3.52,22.18,5.74,2.29.75,4.54,1.57,6.83,2.35,8.34,2.75,16.48,5.72,24.52,9.09.81.35,1.66.77,2.45,1.1,48.09,20.95,90.29,53.21,123.21,93.53.19.25.4.58.59.8,46.34,57.1,74.26,130.11,74.26,209.58h-75.81c-1.94,0-3.84,1.05-4.84,2.89-1,1.85-.85,4,.26,5.64l127.43,193.45c.96,1.49,2.66,2.47,4.6,2.47s3.59-.97,4.59-2.47l127.35-193.45c1.09-1.65,1.24-3.8.25-5.64-1.01-1.85-2.9-2.89-4.85-2.89h-75.75s0,0,0,0Z"></path>
+            <div class="rightBox">
+                <div class="fullBtn" onclick="nomBox()" id="weilin_fullBtn">
+                    <div class="fullIcon">
+                        <svg t="1723036752389" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022.73 870.84">
+                            <path d="M384 128h-85.33v170.67H128V384h256zM896 384v-85.33H725.33V128H640v256zM725.33 725.33H896V640H640v256h85.33zM298.67 896H384V640H128v85.33h170.67z" p-id="3296"></path>
                         </svg>
                     </div>
+                    <div style="padding-left: 10px;">还原窗口</div>
                 </div>
-                <div style="padding-left: 10px;">刷新PromptUI</div>
+                <div class="nomBtn" onclick="fullBox()" id="weilin_nomBtn">
+                    <div class="nomIcon">
+                        <svg t="1723036324160" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022.73 870.84">
+                            <path d="M928 128H96a53.393333 53.393333 0 0 0-53.333333 53.333333v661.333334a53.393333 53.393333 0 0 0 53.333333 53.333333h832a53.393333 53.393333 0 0 0 53.333333-53.333333V181.333333a53.393333 53.393333 0 0 0-53.333333-53.333333z m10.666667 714.666667a10.666667 10.666667 0 0 1-10.666667 10.666666H96a10.666667 10.666667 0 0 1-10.666667-10.666666V181.333333a10.666667 10.666667 0 0 1 10.666667-10.666666h832a10.666667 10.666667 0 0 1 10.666667 10.666666zM377.753333 560.913333a21.333333 21.333333 0 0 1 0 30.173334L200.833333 768H320a21.333333 21.333333 0 0 1 0 42.666667H149.206667a21.333333 21.333333 0 0 1-21.206667-21.206667V618.666667a21.333333 21.333333 0 0 1 42.666667 0v119.166666l176.913333-176.92a21.333333 21.333333 0 0 1 30.173333 0zM896 234.54V405.333333a21.333333 21.333333 0 0 1-42.666667 0V286.166667l-176.913333 176.92a21.333333 21.333333 0 0 1-30.173333-30.173334L823.166667 256H704a21.333333 21.333333 0 0 1 0-42.666667h170.793333a21.333333 21.333333 0 0 1 21.206667 21.206667z"></path>
+                        </svg>
+                    </div>
+                    <div style="padding-left: 10px;">放大窗口</div>
+                </div>
             </div>
-            <!-- <button onclick="closeDialog()" >关闭PromptUI</button> -->
         </div>
-        <div style="margin-top: 10px;padding-left: 10px;">在此输入提示词即可，当打开本UI的时候Comyfui正向提示词输入框默认只读无法编辑文本！</div>
+        <div style="margin-top: 10px;padding-left: 10px;" id="notePromptBox">在此输入提示词即可，当打开本UI的时候Comyfui正向提示词输入框默认只读无法编辑文本！</div>
         <div style="margin-top: 10px;padding-left: 10px;" id="yourIsEditing"></div>
     </div>
     <div id="tabs">
@@ -205,6 +300,9 @@
         <div class="card"></div>
     </div>
 </body>
+<script src="./js/jquery-3.7.1.min.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/clipboard.min.js"></script>
 <script>
     const APP_MODE = true
     let UiLoaded = []
@@ -212,6 +310,16 @@
     let loras = []
     let opts = {}
     let thisRandomId = ''
+    let boxStatus= 'nom'
+
+    if (window.frameElement && window.frameElement.tagName === 'IFRAME') {
+
+    } else {
+        window.close()
+    }
+
+    new ClipboardJS('.btn');
+
 
     const params = new URL(window.location.href)
     const searchParams = params.searchParams
@@ -220,14 +328,38 @@
     const theme =  searchParams.get('__theme')
     thisRandomId = localStorage.getItem("weilin_prompt_randomid");
     const getTheme = localStorage.getItem("weilin_prompt_theme");
+    let getBoxStatus = localStorage.getItem("weilin_prompt_box_status");
+    const weilin_fullBtn = document.getElementById("weilin_fullBtn")
+    const weilin_nomBtn = document.getElementById("weilin_nomBtn")
+    const weilin_copyPrompt = document.getElementById("weilin_copyPrompt")
+    const weilinCopyGreatPrompt = document.getElementById("weilinCopyGreatPrompt")
+    const weilinCopyNegPrompt = document.getElementById("weilinCopyNegPrompt")
+    new ClipboardJS(weilinCopyGreatPrompt);
+    new ClipboardJS(weilinCopyNegPrompt);
+    // console.log(getBoxStatus)
+    if(getBoxStatus == null){
+        localStorage.setItem("weilin_prompt_box_status","nom");
+        weilin_fullBtn.style.display = ""
+        weilin_nomBtn.style.display = "none"
+    }else{
+        boxStatus = getBoxStatus
+        if(getBoxStatus == "full"){
+            weilin_fullBtn.style.display = "flex"
+            weilin_nomBtn.style.display = "none"
+        }else{
+            weilin_fullBtn.style.display = "none"
+            weilin_nomBtn.style.display = "flex"
+        }
+    }
 
     // console.log(window_type)
     if(window_type == 'greate_prompt'){
         const ng_box = document.getElementById('component-5178')
         ng_box.style = "display: none !important";
-        window.name = 'greate_prompt_xx_2024'
         const editingBox = document.getElementById('yourIsEditing')
+        const notePromptBox = document.getElementById('notePromptBox')
         editingBox.innerText="你正在编辑 -> 正向提示词"
+        notePromptBox.style.display = "flex"
         
         const great_refid = localStorage.getItem("weilin_prompt_great_refid")
         if(ref_id != great_refid){
@@ -236,14 +368,26 @@
     }else if(window_type == 'neg_prompt'){
         const ng_box = document.getElementById('component-5173')
         ng_box.style = "display: none !important";
-        window.name = 'neg_prompt_xx_2024'
         const editingBox = document.getElementById('yourIsEditing')
+        const notePromptBox = document.getElementById('notePromptBox')
         editingBox.innerText="你正在编辑 -> 反向提示词"
+        notePromptBox.style.display = "flex"
 
         const neg_refid = localStorage.getItem("weilin_prompt_neg_refid")
         if(ref_id != neg_refid){
             window.top.postMessage({handel: 'getWeilinNegPromptBox', randomid: thisRandomId}, "/");
         }
+    }else if(window_type == 'global_prompt'){
+        const editingBox = document.getElementById('yourIsEditing')
+        const notePromptBox = document.getElementById('notePromptBox')
+        editingBox.innerText="你正在使用临时提示词模式，该模式下仅用于对提示词的临时使用无法同步到节点中"
+        notePromptBox.style.display = "none"
+
+        const global_refid = localStorage.getItem("weilin_prompt_global_refid")
+        if(ref_id != global_refid){
+            window.top.postMessage({handel: 'getWeilinGlobalPromptBox', randomid: thisRandomId}, "/");
+        }
+        weilin_copyPrompt.style.display = "flex"
     }
     
     if(theme != getTheme && (theme=='light' || theme=='dark' || theme == null)){
@@ -253,6 +397,8 @@
             window.top.postMessage({handel: 'getWeilinGreatPromptBox', randomid: thisRandomId}, "/");
         }else if(window_type == 'neg_prompt'){
             window.top.postMessage({handel: 'getWeilinNegPromptBox', randomid: thisRandomId}, "/");
+        }else if(window_type == 'global_prompt'){
+            window.top.postMessage({handel: 'getWeilinGlobalPromptBox', randomid: thisRandomId}, "/");
         }
     }
 
@@ -287,51 +433,76 @@
         if(window_type =='greate_prompt'){
             thisRandomId = e.data.randomid
             log.value = e.data.value
-            // openDialog()
         }
       }else if(e.data.handel == 'openWeiLinNegPromptSD'){
         if(window_type =='neg_prompt'){
             thisRandomId = e.data.randomid
             log2.value = e.data.value
-            // openDialog()
+        }
+      }else if(e.data.handel  == 'openWeiLinGlobalPromptSD'){
+        if(window_type =='global_prompt'){
+            thisRandomId = e.data.randomid
+            log.value = e.data.value_great
+            log2.value = e.data.value_neg
         }
       }else if(e.data.handel == 'responeseWeiLinGreatPromptGet'){
         if(window_type =='greate_prompt'){
             thisRandomId = e.data.randomid
             log.value = e.data.value
-            // openDialog()
         }
       }else if(e.data.handel == 'responeseWeiLinNegPromptGet'){
         if(window_type =='neg_prompt'){
             thisRandomId = e.data.randomid
             log2.value = e.data.value
-            // openDialog()
+        }
+      }else if(e.data.handel == 'responeseWeiLinGlobalPromptGet'){
+        if(window_type =='global_prompt'){
+            thisRandomId = e.data.randomid
+            log.value = e.data.value_great
+            log2.value = e.data.value_neg
+        }
+      }else if(e.data.handel == 'fullBoxWeilinPromptBoxResponse'){
+        getBoxStatus = localStorage.getItem("weilin_prompt_box_status");
+        boxStatus = getBoxStatus
+        if(getBoxStatus == "full"){
+            weilin_fullBtn.style.display = "flex"
+            weilin_nomBtn.style.display = "none"
+        }else{
+            weilin_fullBtn.style.display = "none"
+            weilin_nomBtn.style.display = "flex"
+        }
+      }else if(e.data.handel == 'nomBoxWeilinPromptBoxResponse'){
+        getBoxStatus = localStorage.getItem("weilin_prompt_box_status");
+        boxStatus = getBoxStatus
+        if(getBoxStatus == "full"){
+            weilin_fullBtn.style.display = "flex"
+            weilin_nomBtn.style.display = "none"
+        }else{
+            weilin_fullBtn.style.display = "none"
+            weilin_nomBtn.style.display = "flex"
         }
       }
     }, false);
 
     function updateValue(e) {
-        console.log(log.value)
+        // console.log(log.value)
         if(window_type =='greate_prompt'){
             window.top.postMessage({handel: 'changeWeiLinGreatePrompt',value: log.value,randomid: thisRandomId}, "/");
         }else if(window_type =='neg_prompt'){
             window.top.postMessage({handel: 'changeWeiLinNegPrompt',value: log2.value,randomid: thisRandomId}, "/");
+        }else if(window_type =='global_prompt'){
+            window.top.postMessage({handel: 'changeWeiLinGlobalPrompt',value_great: log.value,value_neg: log2.value,randomid: thisRandomId}, "/");
         }
     }
 
-    function openDialog(){
-        const dialog = document.getElementById("weilin_promptGreateDialog");
-        dialog.show()
-    }
 
     function closeDialog(){
-        // const dialog = document.getElementById("weilin_promptGreateDialog");
-        // dialog.close()
-        // console.log(thisRandomId)
         if(window_type =='greate_prompt'){
             window.top.postMessage({handel: 'closeWeilinGreatPromptBox', randomid: thisRandomId}, "/");
         }else if(window_type =='neg_prompt'){
             window.top.postMessage({handel: 'closeWeilinNegPromptBox', randomid: thisRandomId}, "/");
+        }else if(window_type =='global_prompt'){
+            window.top.postMessage({handel: 'closeWeilinGlobalPromptBox', randomid: thisRandomId}, "/");
         }
     }
 
@@ -347,8 +518,14 @@
         }  
     }
 
+
+    function fullBox(){
+        window.top.postMessage({handel: 'fullBoxWeilinPromptBox', randomid: thisRandomId}, "/");
+    }
+    function nomBox(){
+        window.top.postMessage({handel: 'nomBoxWeilinPromptBox', randomid: thisRandomId}, "/");
+    }
+
 </script>
-<script src="./js/jquery-3.7.1.min.js"></script>
-<script src="./js/main.js"></script>
 <script src="/sd-webui-prompt-all-in-one-js"></script>
 </html>

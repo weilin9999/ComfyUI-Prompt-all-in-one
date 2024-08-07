@@ -423,6 +423,8 @@ def on_app_started(_: gr.Blocks):
 
 try:
     on_app_started(on_app_started)
-    print('sd-webui-prompt-all-in-one background API service started successfully.')
+    print('WeiLinComfyUIPromptAllInOne background API service started successfully.')
+    print('WeiLinComfyUIPromptAllInOne 插件API已成功启动！')
 except Exception as e:
-    print(f'sd-webui-prompt-all-in-one background API service failed to start: {e}')
+    print(f'WeiLinComfyUIPromptAllInOne background API service failed to start: {e}')
+    print(f'WeiLinComfyUIPromptAllInOne 插件API启动失败: {e}')

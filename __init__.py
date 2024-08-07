@@ -1,8 +1,10 @@
 
 import re
 import random
+from .sd_webui_prompt_all_in_one_app import launch
 import os
-import subprocess
+import pkg_resources
+
 
 #正向提示词
 class WeiLinComfyUIPromptAllInOneGreat:
@@ -83,17 +85,36 @@ def extract_tags(text):
 base_path = os.path.join(os.path.dirname(__file__), "sd_webui_prompt_all_in_one_app")
 req_path = os.path.join(base_path,"requirements.txt")
 
+def dist2package(dist: str):
+    return ({
+        "gradio": "gradio",
+    }).get(dist, dist)
+
+
 def install_requirements(requirements_file_path):
-    if os.path.exists(requirements_file_path):
-        try:
-            subprocess.run(["pip", "install", "-r", requirements_file_path])
-        except:
-            subprocess.run(["pip", "install", "-r", requirements_file_path], shell=True)
+    # copy from controlnet, thanks
+    with open(requirements_file_path) as file:
+        for package in file:
+            try:
+                package = package.strip()
+                if '==' in package:
+                    package_name, package_version = package.split('==')
+                    installed_version = pkg_resources.get_distribution(package_name).version
+                    if installed_version != package_version:
+                        launch.run_pip(f"install {package}", f"WeiLinComfyUIPromptAllInOne requirement: changing {package_name} version from {installed_version} to {package_version}")
+                elif not launch.is_installed(dist2package(package)):
+                    launch.run_pip(f"install {package}", f"WeiLinComfyUIPromptAllInOne requirement: {package}")
+            except Exception as e:
+                print(e)
+                print(f'[错误]: Failed to install {package}, something may not work.')
 
 #安装原APP依赖
-print('安装依赖中.......')
-install_requirements(req_path)
-print('安装完成 =======')
+print('WeiLinComfyUIPromptAllInOne 请求安装依赖中.......')
+try:
+    install_requirements(req_path)
+    print('WeiLinComfyUIPromptAllInOne 请求安装依赖完成 =======')
+except: 
+    print('WeiLinComfyUIPromptAllInOne 请求安装依赖失败 =======')
 #启动原APP
 from .sd_webui_prompt_all_in_one_app.app import app_start
 app_start()

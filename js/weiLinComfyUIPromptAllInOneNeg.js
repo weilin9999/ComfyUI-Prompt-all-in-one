@@ -1,41 +1,32 @@
 import { app } from '../../scripts/app.js'
 
+// 反向提示词
+
 let global_randomID = (Math.random() + new Date().getTime()).toString(32).slice(0,8); // 随机种子ID
 app.registerExtension({
   name: "weilin.prompt_node_neg",
+  
   async init(app) {
-    const style = document.createElement("style");
-    style.innerText = `.panelWeiLinPrompNegBox {
-      width: 100%;
-    }
-      .weilin_bg_box{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: 999;
-      }
-      .weilin_iframe_box{
-        min-width: 80%;
-        min-height: 80%;
-        border-radius: 10px;
-        background-color: #ffffff;
-      }
-    `;
-    document.head.appendChild(style)
 
     const hasIframeBox = document.getElementById('weilin_bg_box_neg')
     if(hasIframeBox == null){
       const ui_theme = localStorage.getItem("weilin_prompt_theme");
       localStorage.setItem("weilin_prompt_neg_refid",global_randomID)
+      const getBoxStatus = localStorage.getItem("weilin_prompt_box_status");
+      let minHeight = '';
+      let minWidth = '';
+      if(getBoxStatus == "full"){
+          minHeight="100%"
+          minWidth="100%"
+      }else{
+          minHeight="80%"
+          minWidth="80%"
+      }
       // 全局创建一个即可
       const iftramBox = document.createElement("div");
       iftramBox.innerHTML = `
         <iframe
+          style="min-width: ${minWidth};min-height: ${minHeight};"
           class="weilin_iframe_box"
           id='weilin_prompt_neg_box'
           name='weilin_prompt_neg_box'
@@ -92,6 +83,16 @@ app.registerExtension({
 
                 const ui_theme = localStorage.getItem("weilin_prompt_theme");
                 const iframeEle = document.getElementById('weilin_prompt_neg_box')
+
+                const getBoxStatus = localStorage.getItem("weilin_prompt_box_status");
+                if(getBoxStatus == "full"){
+                    iframeEle.style.minHeight="100%"
+                    iframeEle.style.minWidth="100%"
+                }else{
+                    iframeEle.style.minHeight="80%"
+                    iframeEle.style.minWidth="80%"
+                }
+
                 const params = new URL(iframeEle.src)
                 const searchParams = params.searchParams
                 const theme_type =  searchParams.get("__theme")
@@ -123,6 +124,22 @@ app.registerExtension({
               const ui_theme = localStorage.getItem("weilin_prompt_theme");
               const iframeEle = document.getElementById('weilin_prompt_neg_box')
               iframeEle.src = `./weilin/web_ui/index.html?type=neg_prompt&refid=${global_randomID}&__theme=${ui_theme}`
+            }else if(e.data.handel == 'fullBoxWeilinPromptBox'){
+              localStorage.setItem("weilin_prompt_box_status","full");
+              const iframeEle = document.getElementById('weilin_prompt_neg_box')
+              iframeEle.style.minHeight="100%"
+              iframeEle.style.minWidth="100%"
+              for (let index = 0; index < window.length; index++) {
+                window[index].postMessage({handel: 'fullBoxWeilinPromptBoxResponse',randomid: randomID}, "*");
+              }
+            }else if(e.data.handel == 'nomBoxWeilinPromptBox'){
+              localStorage.setItem("weilin_prompt_box_status","nom");
+              const iframeEle = document.getElementById('weilin_prompt_neg_box')
+              iframeEle.style.minHeight="80%"
+              iframeEle.style.minWidth="80%"
+              for (let index = 0; index < window.length; index++) {
+                window[index].postMessage({handel: 'nomBoxWeilinPromptBoxResponse',randomid: randomID}, "*");
+              }
             }
           }, false);
 

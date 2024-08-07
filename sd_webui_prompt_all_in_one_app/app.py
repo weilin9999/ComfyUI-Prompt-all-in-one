@@ -40,3 +40,4 @@ def app_start():
 
     print("====== WeiLin prompt-all-in-one =====")
     print(f"APP is running  WeiLin prompt-all-in-one!.")
+    print(f"WeiLinComfyUIPromptAllInOne 节点已启动成功!.")
