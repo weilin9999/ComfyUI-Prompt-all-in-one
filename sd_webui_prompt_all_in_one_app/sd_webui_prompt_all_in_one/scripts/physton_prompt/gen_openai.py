@@ -1,5 +1,11 @@
-from scripts.physton_prompt.get_lang import get_lang
-from scripts.physton_prompt.get_translate_apis import unprotected_translate_api_config
+import sys
+import os
+
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+from get_lang import get_lang
+from get_translate_apis import unprotected_translate_api_config
 
 
 def gen_openai(messages, api_config):

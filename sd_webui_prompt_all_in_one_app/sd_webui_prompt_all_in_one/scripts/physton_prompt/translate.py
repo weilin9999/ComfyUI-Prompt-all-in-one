@@ -1,25 +1,32 @@
 import json
 import hashlib
-from scripts.physton_prompt.get_lang import get_lang
-from scripts.physton_prompt.get_translate_apis import get_translate_apis, unprotected_translate_api_config
-from scripts.physton_prompt.translator.alibaba_translator import AlibabaTranslator
-from scripts.physton_prompt.translator.amazon_translator import AmazonTranslator
-from scripts.physton_prompt.translator.baidu_translator import BaiduTranslator
-from scripts.physton_prompt.translator.deepl_translator import DeeplTranslator
-from scripts.physton_prompt.translator.google_tanslator import GoogleTranslator
-from scripts.physton_prompt.translator.microsoft_translator import MicrosoftTranslator
-from scripts.physton_prompt.translator.openai_translator import OpenaiTranslator
-from scripts.physton_prompt.translator.tencent_translator import TencentTranslator
-from scripts.physton_prompt.translator.translators_translator import TranslatorsTranslator
-from scripts.physton_prompt.translator.yandex_translator import YandexTranslator
-from scripts.physton_prompt.translator.youdao_translator import YoudaoTranslator
-from scripts.physton_prompt.translator.mymemory_translator import MyMemoryTranslator
-from scripts.physton_prompt.translator.niutrans_translator import NiutransTranslator
-from scripts.physton_prompt.translator.caiyun_translator import CaiyunTranslator
-from scripts.physton_prompt.translator.volcengine_translator import VolcengineTranslator
-from scripts.physton_prompt.translator.iflytekV1_translator import IflytekV1Translator
-from scripts.physton_prompt.translator.iflytekV2_translator import IflytekV2Translator
-from scripts.physton_prompt.translator.mbart50_translator import MBart50Translator
+import sys
+import os
+
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+
+from get_lang import get_lang
+from get_translate_apis import get_translate_apis, unprotected_translate_api_config
+from translator.alibaba_translator import AlibabaTranslator
+from translator.amazon_translator import AmazonTranslator
+from translator.baidu_translator import BaiduTranslator
+from translator.deepl_translator import DeeplTranslator
+from translator.google_tanslator import GoogleTranslator
+from translator.microsoft_translator import MicrosoftTranslator
+from translator.openai_translator import OpenaiTranslator
+from translator.tencent_translator import TencentTranslator
+from translator.translators_translator import TranslatorsTranslator
+from translator.yandex_translator import YandexTranslator
+from translator.youdao_translator import YoudaoTranslator
+from translator.mymemory_translator import MyMemoryTranslator
+from translator.niutrans_translator import NiutransTranslator
+from translator.caiyun_translator import CaiyunTranslator
+from translator.volcengine_translator import VolcengineTranslator
+from translator.iflytekV1_translator import IflytekV1Translator
+from translator.iflytekV2_translator import IflytekV2Translator
+from translator.mbart50_translator import MBart50Translator
 
 caches = {}
 

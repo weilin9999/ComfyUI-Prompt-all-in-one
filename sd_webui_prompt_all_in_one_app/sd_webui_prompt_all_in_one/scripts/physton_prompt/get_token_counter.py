@@ -3,8 +3,10 @@ from functools import partial, reduce
 # from modules import prompt_parser
 import sys
 import os
+
 Path = os.path.join(os.path.dirname(__file__), "../../../")
-sys.path.append(Path)
+sys.path.append(os.path.abspath(Path))
+
 from modules import sd_hijack
 
 

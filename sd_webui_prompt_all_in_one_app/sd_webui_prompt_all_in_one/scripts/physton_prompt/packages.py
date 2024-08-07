@@ -1,5 +1,11 @@
 import launch
-from scripts.physton_prompt.get_lang import get_lang
+import sys
+import os
+
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+from get_lang import get_lang
 
 packages = {
     "chardet": "chardet",

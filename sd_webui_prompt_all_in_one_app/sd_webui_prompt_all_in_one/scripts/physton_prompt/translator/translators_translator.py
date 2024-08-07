@@ -1,6 +1,13 @@
-from scripts.physton_prompt.translator.base_tanslator import BaseTranslator
+import sys
 import os
 
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+from base_tanslator import BaseTranslator
+
+Path = os.path.join(os.path.dirname(__file__), "../")
+sys.path.append(Path)
 
 class TranslatorsTranslator(BaseTranslator):
     translator = None
@@ -13,7 +20,7 @@ class TranslatorsTranslator(BaseTranslator):
         region = self.api_config.get('region', 'CN')
         host = self.api_config.get('host', '')
         os.environ['translators_default_region'] = region
-        from scripts.physton_prompt.translators.server import translate_text, tss, AlibabaV1
+        from translators.server import translate_text, tss, AlibabaV1
         tss.server_region = region
         tss._bing.server_region = region
         tss._google.server_region = region

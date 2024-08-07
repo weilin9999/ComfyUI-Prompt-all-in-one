@@ -6,22 +6,26 @@ from pathlib import Path
 from server import PromptServer
 from aiohttp import web
 
-from scripts.physton_prompt.storage import Storage
-from scripts.physton_prompt.get_extensions import get_extensions
-from scripts.physton_prompt.get_token_counter import get_token_counter
-from scripts.physton_prompt.get_i18n import get_i18n
-from scripts.physton_prompt.get_translate_apis import get_translate_apis, privacy_translate_api_config, unprotected_translate_api_config
-from scripts.physton_prompt.translate import translate
-from scripts.physton_prompt.history import History
-from scripts.physton_prompt.csv import get_csvs, get_csv
-from scripts.physton_prompt.styles import get_style_full_path, get_extension_css_list
-from scripts.physton_prompt.get_extra_networks import get_extra_networks
-from scripts.physton_prompt.packages import get_packages_state, install_package
-from scripts.physton_prompt.gen_openai import gen_openai
-from scripts.physton_prompt.get_lang import get_lang
-from scripts.physton_prompt.get_version import get_git_commit_version, get_git_remote_versions, get_latest_version
-from scripts.physton_prompt.mbart50 import initialize as mbart50_initialize, translate as mbart50_translate
-from scripts.physton_prompt.get_group_tags import get_group_tags
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+# 添加环境再导入包
+from physton_prompt.storage import Storage
+from physton_prompt.get_extensions import get_extensions
+from physton_prompt.get_token_counter import get_token_counter
+from physton_prompt.get_i18n import get_i18n
+from physton_prompt.get_translate_apis import get_translate_apis, privacy_translate_api_config, unprotected_translate_api_config
+from physton_prompt.translate import translate
+from physton_prompt.history import History
+from physton_prompt.csv import get_csvs, get_csv
+from physton_prompt.styles import get_style_full_path, get_extension_css_list
+from physton_prompt.get_extra_networks import get_extra_networks
+from physton_prompt.packages import get_packages_state, install_package
+from physton_prompt.gen_openai import gen_openai
+from physton_prompt.get_lang import get_lang
+from physton_prompt.get_version import get_git_commit_version, get_git_remote_versions, get_latest_version
+from physton_prompt.mbart50 import initialize as mbart50_initialize, translate as mbart50_translate
+from physton_prompt.get_group_tags import get_group_tags
 
 try:
     from ...modules.shared import cmd_opts

@@ -3,8 +3,10 @@ import json
 import os
 import copy
 import sys
+
 Path = os.path.join(os.path.dirname(__file__), "../../../")
 sys.path.append(Path)
+
 from modules import ui_extra_networks
 
 filters = [

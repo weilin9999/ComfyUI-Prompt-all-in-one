@@ -1,7 +1,12 @@
 import os
 import json
-import re
-from scripts.physton_prompt.storage import Storage
+import sys
+
+# 修复个别电脑环境会报的错
+Path = os.path.dirname(__file__)
+sys.path.append(Path)
+
+from storage import Storage
 st = Storage()
 
 # from scripts.physton_prompt.storage import Storage

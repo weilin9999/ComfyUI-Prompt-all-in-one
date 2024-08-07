@@ -6,8 +6,15 @@ from datetime import datetime
 
 import requests
 
-from scripts.physton_prompt.get_lang import get_lang
-from scripts.physton_prompt.translator.base_tanslator import BaseTranslator
+import sys
+import os
+
+# 修复个别电脑环境会报的错
+Path = os.path.join(os.path.dirname(__file__), "../")
+sys.path.append(Path)
+
+from get_lang import get_lang
+from translator.base_tanslator import BaseTranslator
 
 
 class TencentTranslator(BaseTranslator):

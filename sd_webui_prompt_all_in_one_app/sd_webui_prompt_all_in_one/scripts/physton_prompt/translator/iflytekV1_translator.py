@@ -1,11 +1,18 @@
-from scripts.physton_prompt.translator.base_tanslator import BaseTranslator
+import sys
+import os
+
+# 修复个别电脑环境会报的错
+Path = os.path.join(os.path.dirname(__file__), "../")
+sys.path.append(Path)
+
+from base_tanslator import BaseTranslator
 import requests
 import datetime
 import hashlib
 import base64
 import hmac
 import json
-from scripts.physton_prompt.get_lang import get_lang
+from get_lang import get_lang
 
 
 class IflytekV1Translator(BaseTranslator):
