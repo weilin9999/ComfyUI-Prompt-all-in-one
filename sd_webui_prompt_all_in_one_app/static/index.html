@@ -185,7 +185,7 @@
                                         <div id="txt2img_prompt" class="block gradio-textbox svelte-mppz8v padded">
                                             <label class="svelte-4xt1ch">
                                                 <span class="svelte-1gfkn6j sr-only hide"></span>
-                                                <textarea id="weilin_prompt_text_input" data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                                <textarea id="weilin_prompt_text_input"    data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
                                             </label>
                                             <my-component></my-component>
                                         </div>
@@ -208,7 +208,7 @@
                                         <div id="txt2img_neg_prompt" class="block gradio-textbox svelte-mppz8v padded">
                                             <label class="svelte-4xt1ch">
                                                 <span class="svelte-1gfkn6j sr-only hide"></span>
-                                                <textarea id="weilin_prompt_text_neg_input" data-testid="textbox" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
+                                                <textarea id="weilin_prompt_text_neg_input" data-testid="textbox" style="will-change: clip-path;resize: none;" class="scroll-hide svelte-4xt1ch autocomplete" placeholder="" rows="3"></textarea>
                                             </label>
                                         </div>
                                     </div>
@@ -307,7 +307,7 @@
     const APP_MODE = true
     let UiLoaded = []
     let embeddings = []
-    let loras = []
+    let loras = ['asaa','asdas']
     let opts = {}
     let thisRandomId = ''
     let boxStatus= 'nom'
@@ -365,6 +365,8 @@
         if(ref_id != great_refid){
             window.top.postMessage({handel: 'getWeilinGreatPromptBox', randomid: thisRandomId}, "/");
         }
+        const evt = new CustomEvent("weilinInitCompleteGreatPrompt", {"detail":{"open":true}});
+        window.top.document.dispatchEvent(evt);
     }else if(window_type == 'neg_prompt'){
         const ng_box = document.getElementById('component-5173')
         ng_box.style = "display: none !important";
@@ -377,6 +379,8 @@
         if(ref_id != neg_refid){
             window.top.postMessage({handel: 'getWeilinNegPromptBox', randomid: thisRandomId}, "/");
         }
+        const evt = new CustomEvent("weilinInitCompleteNegPrompt", {"detail":{"open":true}});
+        window.top.document.dispatchEvent(evt);
     }else if(window_type == 'global_prompt'){
         const editingBox = document.getElementById('yourIsEditing')
         const notePromptBox = document.getElementById('notePromptBox')
@@ -388,6 +392,8 @@
             window.top.postMessage({handel: 'getWeilinGlobalPromptBox', randomid: thisRandomId}, "/");
         }
         weilin_copyPrompt.style.display = "flex"
+        const evt = new CustomEvent("weilinInitCompleteGlobalPrompt", {"detail":{"open":true}});
+        window.top.document.dispatchEvent(evt);
     }
     
     if(theme != getTheme && (theme=='light' || theme=='dark' || theme == null)){

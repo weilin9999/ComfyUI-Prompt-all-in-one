@@ -432,3 +432,9 @@ try:
 except Exception as e:
     print(f'WeiLinComfyUIPromptAllInOne background API service failed to start: {e}')
     print(f'WeiLinComfyUIPromptAllInOne 插件API启动失败: {e}')
+
+
+AUTO_COMPLETE_PATH = os.path.join(os.path.dirname(__file__), "../../../")
+sys.path.append(AUTO_COMPLETE_PATH)
+from script.autocomplete import runApp
+runApp()

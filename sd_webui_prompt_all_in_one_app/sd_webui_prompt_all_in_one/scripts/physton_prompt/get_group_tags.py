@@ -3,7 +3,7 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 def _get_tags_filename(name):
-    file = os.path.join(current_dir, '../../group_tags/', name + '.yaml')
+    file = os.path.join(current_dir, '../../../../group_tags/', name + '.yaml')
     return file
 
 def get_group_tags(lang):
